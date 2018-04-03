@@ -1,12 +1,8 @@
 #03/04/2018
 ## tomato pictures grown/unripe classification
 
-#####disable CUDA
-import os
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1' # -1 !!!!
-#####disable CUDA
 
+import os
 import sys
 import numpy as np
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
@@ -28,14 +24,22 @@ img_dim_ordering = 'tf'
 K.set_image_dim_ordering(img_dim_ordering)
 
 
+#####disable CUDA 
+disable_CUDA=True
+
+
+#####if disable CUDA
+if disable_CUDA :
+  os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
+  os.environ['CUDA_VISIBLE_DEVICES'] = '-1' # -1 !!!!
+#####disable CUDA
 
 ###########################  GPU vram optimization
-
-from keras import backend as K
-config = tf.ConfigProto()
-config.gpu_options.allow_growth = True
-sess = tf.Session(config=config)
-K.set_session(sess)
+if not disable_CUDA :
+  config = tf.ConfigProto()
+  config.gpu_options.allow_growth = True
+  sess = tf.Session(config=config)
+  K.set_session(sess)
 
 ###########################
 
