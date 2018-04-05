@@ -128,10 +128,10 @@ model2 = pretrain_classifier_top()
 print("Starting training")
 model2.fit_generator(
         train_generator,
-        steps_per_epoch=117, # batch_size : 390 images * 3  / 10 
+        steps_per_epoch=111, # batch_size : 372 images * 3  / 10 
         epochs=40)
 print("Saving model")          
-model2.save("model2_40_50_02")        
+model2.save("model2_117_40_01")        
 print("validation generator")        
 validation_generator=validation_generator()
 validation_generator.class_indices  ###classes
