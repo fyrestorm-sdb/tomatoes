@@ -12,8 +12,8 @@ from keras.applications.vgg16 import VGG16
 from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input
 from keras.layers import Input, Flatten, Dense,  Dropout, Activation
-from keras.layers import Sequential, MaxPooling2D, AveragePooling2D, Conv2D
-from keras.models import Model
+from keras.layers import MaxPooling2D, AveragePooling2D, Conv2D
+from keras.models import Model,Sequential
 from keras.utils import np_utils
 from keras import optimizers
 from keras import backend as K
